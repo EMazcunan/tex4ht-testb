@@ -3,7 +3,6 @@
 *.aux
 *.auxlock
 *.cfg
-*.css
 *.dvi
 *.eps
 *.idv
