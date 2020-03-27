@@ -1,0 +1,158 @@
+%% make4ht -us -c config -f html5+tidy+dvisvgm_hashes -e build.mk4 test.tex 
+
+
+\documentclass[12pt,a4paper,twoside]{article}
+%\ifdefined\HCode\def\pgfsysdriver{pgfsys-dvisvgm4ht.def}\fi % sale la caja con el título, pero con xx en lugar de acentos y da WARNING sobre Unbalanced Tag (/p)
+%\ifdefined\HCode\def\pgfsysdriver{/home/eva/texmf/tex/latex/dvisvgm/pgfsys-dvisvgm4ht.def}\fi 
+%\ifdefined\HCode\def\pgfsysdriver{pgfsys-tex4ht-updated.def}\fi % no se visualiza .svg (texto alternativo picture)
+
+
+\usepackage[utf8]{inputenx}
+%\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[
+	spanish, 
+	es-minimal, 
+	%es-sloppy
+	%es-nolists, % desactiva los cambios en los símbolos de enumerate e itemize
+	%es-noindentfirst, % el primer párrafo después de cada sección sí se sangra
+	%es-nosectiondot, % desactiva punto después de número sección (en texto y toc)
+	%es-noquoting, % desactiva abreviaciones << >> y "` "' del entorno quoting
+	%es-notilde,% desactiva abreviaciones ~- ~-- ~---
+	%es-ucroman, % desactiva redefinición de \roman para dar i, ii, ... en versalitas
+	%es-noshorthands,
+	%es-lcroman,
+]{babel}
+%\renewcommand\shorthandsspanish{`}
+%\addto\shorthandspanish{\spanishdeactivate{"~<>}}
+%\deactivatequoting
+\unaccentedoperators
+
+\usepackage{lipsum}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+%\usepackage{tikz}
+%%\usetikzlibrary{babel}
+%
+%\usepackage{tcolorbox}
+
+%% ========================
+%\usepackage{mytcolorbox}
+%\usepackage{exsol}
+%\usepackage{scq}
+
+
+%% ========================
+
+\usepackage[%
+%tex4ht
+]{hyperref}
+
+\title{De LaTeX a HTML}
+\author{Nombre español}
+
+\begin{document}
+
+\maketitle
+
+
+
+\ifdefined\HCode\else
+	\tableofcontents
+\fi
+
+
+%
+%\section{exsol}
+%
+%\begin{ex}[sol later]
+%Enunciado ejercicio
+%\begin{sol}
+%Solución
+%\end{sol}
+%\end{ex}
+%
+%
+%\section{scq}
+%En PDF compilar dos/tres veces hasta que desaparezcan las marcas 
+%
+%\begin{scq}
+%	¿Cuánto vale $3^2$?%
+%	\begin{choice}[x]
+%		$9$	
+%	\end{choice}	
+%	\begin{choice}
+%		$6$	
+%	\end{choice}
+%	\begin{choice}
+%		$0$ 
+%	\end{choice}
+%	\begin{feedback}
+%		$3^2=3\times 3 = 9$.
+%	\end{feedback}
+%\end{scq}
+
+%\end{document}
+%%%%
+%\section{tcolorbox}
+%
+%\begin{tcolorbox}[%
+%	title = {Título}
+%]
+%Contenidos 
+%\end{tcolorbox}
+%
+%\lipsum[1]
+%%%\end{document}
+
+\section{Referencias cruzadas}
+
+
+Referencia al número de la última sección: \ref{sec:last} %y \ref{sec:prelast}
+
+\section{Fuentes}
+
+Escritura en \textbf{negrita}, \textit{itálica}, \textsf{sans serif} y \texttt{teletype}.
+
+%Declaraciones: Escritura en {\bfseries negrita}, {\itshape itálica}, {\sffamily sans serif} y {\ttfamily teletype}.
+%\end{document}
+\section{Matemáticas}
+
+\input{samples/maths-sample.tex}
+
+%\end{document}
+\section{Sección}
+
+\lipsum[1-15]
+
+\subsection{Subsección}
+
+\lipsum[1-15]
+
+\subsection{Otra subsección}
+
+\lipsum[1-15]		
+
+\section{Otra sección}
+
+\lipsum[1-15]	
+
+\section*{Otra sección no numerada}
+\ifdefined\HCode\else
+\addcontentsline{toc}{section}{Otra sección no numerada}
+\fi
+
+\lipsum[1-15]			
+
+\section{Una última sección con el título suficientemente largo como para provocar un salto de línea}
+\label{sec:last}
+\lipsum[1-15]	
+
+%\section{Soluciones}
+%
+%\printSolutionsLater{}{sol}
+
+\end{document}
